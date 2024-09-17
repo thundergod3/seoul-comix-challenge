@@ -61,7 +61,7 @@ const RestaurantItem: FC<Props> = ({ data }) => {
           onClick={handleFavoriteItem}
         />
         <div className="flex flex-col gap-">
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 w-full justify-between">
             <Paragraph
               ellipsis
               className="font-semibold text-base text-primary !m-0"

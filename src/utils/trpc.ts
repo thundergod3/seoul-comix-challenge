@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { unstable_httpBatchStreamLink, loggerLink } from '@trpc/client';
+import { loggerLink, httpBatchLink } from '@trpc/client';
 import { createTRPCNext } from '@trpc/next';
 import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
 import type { NextPageContext } from 'next';
@@ -10,15 +10,12 @@ function getBaseUrl() {
   if (typeof window !== 'undefined') {
     return '';
   }
+
   if (process.env.VERCEL_URL) {
     return `https://${process.env.VERCEL_URL}`;
   }
 
-  if (process.env.RENDER_INTERNAL_HOSTNAME) {
-    return `http://${process.env.RENDER_INTERNAL_HOSTNAME}:${process.env.PORT}`;
-  }
-
-  return `http://127.0.0.1:${process.env.PORT ?? 3000}`;
+  return `http://0.0.0.0:${process.env.PORT ?? 3000}`;
 }
 
 export interface SSRContext extends NextPageContext {
@@ -27,6 +24,8 @@ export interface SSRContext extends NextPageContext {
 
 export const trpc = createTRPCNext<AppRouter, SSRContext>({
   config({ ctx }) {
+    console.log('url', getBaseUrl());
+
     return {
       links: [
         loggerLink({
@@ -34,7 +33,7 @@ export const trpc = createTRPCNext<AppRouter, SSRContext>({
             process.env.NODE_ENV === 'development' ||
             (opts.direction === 'down' && opts.result instanceof Error),
         }),
-        unstable_httpBatchStreamLink({
+        httpBatchLink({
           url: `${getBaseUrl()}/api/trpc`,
           headers() {
             if (!ctx?.req?.headers) {

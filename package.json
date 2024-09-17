@@ -17,9 +17,6 @@
     "lint-fix": "pnpm lint --fix",
     "migrate-dev": "prisma migrate dev",
     "migrate": "prisma migrate deploy",
-    "test-unit": "vitest",
-    "test-e2e": "playwright test",
-    "test-start": "run-s test-unit test-e2e",
     "postinstall": "pnpm generate"
   },
   "prisma": {
