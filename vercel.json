@@ -2,7 +2,7 @@
   "version": 2,
   "env": {
     "NODE_ENV": "production",
-    "DATABASE_URL": "postgresql://seoul_comix_database_user:drlHJGY85sjnCmJrEOioYZtcXZKQjkmy@dpg-crkm93rtq21c73dcfdgg-a/seoul_comix_database",
+    "DATABASE_URL": "postgresql://seoul_comix_database_user:drlHJGY85sjnCmJrEOioYZtcXZKQjkmy@dpg-crkm93rtq21c73dcfdgg-a.oregon-postgres.render.com/seoul_comix_database",
     "VERCEL_URL": "seoul-comix-challenge-5qgtgwwin-thundergod3s-projects.vercel.app"
   },
   "headers": [
