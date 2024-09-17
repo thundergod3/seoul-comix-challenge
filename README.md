@@ -1,5 +1,8 @@
 # seoul-comix-challenge
 
+- Demo: https://www.loom.com/share/64073b0b7881410f949a94b4f49ae397
+- Link demo: https://seoul-comix-challenge.vercel.app/
+
 ## Setup
 
 ```bash
